@@ -11,14 +11,14 @@ QPoint myMouseClass::readCursorPosition(){
     return myCursor.pos();
 }
 
-int myMouseClass::mouseYDifference(int basePotisionY){
+int myMouseClass::mouseYDifference(int &basePotisionY){
     return (basePotisionY - myCursor.pos().y());
 };
-int myMouseClass::mouseXDifference(int basePotisionX){
+int myMouseClass::mouseXDifference(int &basePotisionX){
     return (basePotisionX - myCursor.pos().x());
 }
 
-QVector3D myMouseClass::resultant_EulerRotation(qint16 pitch_difference, qint16 yaw_difference, qreal sensitivity){
+QVector3D myMouseClass::resultant_EulerRotation(qint16 &pitch_difference, qint16 &yaw_difference, qreal &sensitivity){
     qreal result_X_rotation = (pitch_difference * sensitivity);
     qreal result_Y_rotation = (yaw_difference * sensitivity);
     //Clamping X
@@ -27,6 +27,5 @@ QVector3D myMouseClass::resultant_EulerRotation(qint16 pitch_difference, qint16 
 
 
     QVector3D returnVector(result_X_rotation, result_Y_rotation, 0.0);
-
     return returnVector;
 };

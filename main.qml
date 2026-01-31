@@ -19,23 +19,19 @@ Window {
     Custom_mouseClass{
         id: myMouseController
         }
-    function moveMyCursor(x, y) {
-    myMouseController.moveCursor(Qt.point(x, y));
-    }
 
     View3D{
     anchors.fill: parent;
     DirectionalLight{brightness: 0.1}
+    renderMode:  View3D.Overlay
 
-    Node{
-    id: cameraOriginNode
     PerspectiveCamera{
         id:myCam;
         z:1000;
         eulerRotation: Qt.vector3d(0, 0 ,0)
 
     }
-}
+
    // DirectionalLight{brightness: 0.1 } //This is simply a global light, presumably with a brightness value of 100.
 Node{
         id: myCubeNode;
@@ -53,43 +49,24 @@ Node{
 
     }
 
-Rectangle{
-    visible: false
-    anchors.fill:parent
-    MouseArea{
-        enabled: true;
-        id:screenArea
-     anchors.fill: parent //Defines a mouse Area which fills the entire parent
-    //cursorShape: Qt.BlankCursor;
-     acceptedButtons: "NoButton"
-    hoverEnabled: false;
-    onPositionChanged: {
-        moveMyCursor(half_width, half_height); //Move cursor to the center, works
 
-        difference_vertical  = (half_height  -= screenArea.mouseY);
-        difference_horizontal  = (half_width -= screenArea.mouseX);
-
-        difference_horizontal= Math.max(-89, Math.min(89, difference_horizontal));
-
-            result_horizontal += (difference_horizontal  *=sensitivity)
-            result_vertical += (difference_vertical*=sensitivity)
-
-            myCam.eulerRotation = Qt.vector3d(result_horizontal, result_vertical, 0)
-
-        }
-    }
-}
 
 property real result_vertical: 0.0;
 property real result_horizontal: 0.0;
 
-
-
-Text {
-    id: name
-    text: qsTr(screenArea.mouseX)
+Timer{
+    id:tickTimer;
+running: true;
+interval: 16; //Approximately 1/60th of a second.
+triggeredOnStart: true; //Just to make the first tick the one where the trigger action runs
+onTriggered :{
+myMouseController.moveCursor(Qt.point(half_width, half_height)); //centers the mouse cursor
+myCam.eulerRotation = (myMouseController.resultant_EulerRotation(
+    myMouseController.mouseXDifference(half_width),
+    myMouseController.mouseYDifference(half_height),
+    sensitivity))
 }
-
-
+repeat: true;
+}
 
 }
