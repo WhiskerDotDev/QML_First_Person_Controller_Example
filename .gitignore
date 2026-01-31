@@ -1,0 +1,9 @@
+build/
+
+.qtcreator/
+
+*.autosave
+
+*.o
+
+*.a
