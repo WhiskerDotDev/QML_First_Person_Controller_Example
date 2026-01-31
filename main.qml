@@ -57,7 +57,7 @@ property real result_horizontal: 0.0;
 Timer{
     id:tickTimer;
 running: true;
-interval: 16; //Approximately 1/60th of a second.
+interval: 200; //Approximately 1/60th of a second.
 triggeredOnStart: true; //Just to make the first tick the one where the trigger action runs
 onTriggered :{
 myMouseController.moveCursor(Qt.point(half_width, half_height)); //centers the mouse cursor

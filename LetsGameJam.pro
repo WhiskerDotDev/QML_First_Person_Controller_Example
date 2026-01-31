@@ -1,4 +1,4 @@
-QT += quick quick3d
+QT += core gui qml quick quick3d
 
 SOURCES += \
         main.cpp \
