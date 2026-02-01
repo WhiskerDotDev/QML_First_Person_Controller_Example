@@ -1,6 +1,5 @@
 #include "mymouseclass.h"
 #include <QtTypes>
-//Define everyting below here. Aside from Variables.
 
 void myMouseClass::moveCursor(const QPoint &p){
     myCursor.setPos(p.x(), p.y());
@@ -28,8 +27,6 @@ QVector3D myMouseClass::resultant_EulerRotation(QVector3D previousRotation ,cons
     } else if(result_X_rotation <= -89.0){
         result_X_rotation = (-88.9);
     }
-
-        //std::max(-89.0, std::min(result_Y_rotation, 89.0));
 
     QVector3D returnVector(result_X_rotation, result_Y_rotation, 0.0);
     return returnVector;

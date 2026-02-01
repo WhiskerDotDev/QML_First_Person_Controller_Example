@@ -11,6 +11,5 @@ QGuiApplication app(argc, argv);
     //When Registering a QML type (as with line of code above) make sure the QML name (last parameter) begins with a capital letter.
 
     engine.load(url);
-
     return app.exec();
 }

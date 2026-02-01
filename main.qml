@@ -5,7 +5,7 @@ import myMouseClass;
 
 
 Window {
-    id: rootWIndow
+    id: rootWIndow;
     visibility: "FullScreen"; //Simply makes the window fullscreen,
     visible: true;
 
@@ -17,38 +17,36 @@ Window {
     property real sensitivity: 0.1;
 
 Custom_mouseClass{
-            id: myMouseController
+            id: myMouseController;
     }
 MouseArea{
-anchors.fill: parent
+anchors.fill: parent;
 cursorShape: "BlankCursor";
 }
 
 Rectangle{
     Image {
-        id: crosshair
+        id: crosshair;
         source: "crosshair_0.png";
         sourceSize: Qt.size(42, 42);
-        smooth:true
+        smooth:true;
     }
-    id:crosshairRectangle
-    y: (half_height - (crosshair.sourceSize.height)/2)
-    x: (half_width - (crosshair.sourceSize.width)/2)
+    id:crosshairRectangle;
+    y: (half_height - (crosshair.sourceSize.height)/2);
+    x: (half_width - (crosshair.sourceSize.width)/2);
 }
 
     View3D{
     anchors.fill: parent;
-    DirectionalLight{brightness: 0.1}
-    renderMode:  View3D.Underlay
+    renderMode:  View3D.Underlay;
+    DirectionalLight{brightness: 0.1;}
 
     PerspectiveCamera{
         id:myCam;
         z:1000;
-        eulerRotation: Qt.vector3d(0, 0 ,0)
-
+        eulerRotation: Qt.vector3d(0, 0 ,0);
     }
 
-   // DirectionalLight{brightness: 0.1 } //This is simply a global light, presumably with a brightness value of 100.
 Node{
         id: myCubeNode;
     Model{id: myCube
@@ -59,13 +57,10 @@ Node{
                     baseColor: "#40c060" //Apparently works but doesn't do jack shit?
                     roughness: 0.1
                     metalness: 0
-                    }
+            }
+        }
     }
 }
-
-    }
-
-
 
 property real result_vertical: 0.0;
 property real result_horizontal: 0.0;
@@ -76,15 +71,12 @@ running: true;
 interval: 10 //Approximately 1/60th of a second.
 //triggeredOnStart: true;//Just to make the first tick the one where the trigger action runs
 repeat: true;
-onTriggered :{
-myCam.eulerRotation = (myMouseController.resultant_EulerRotation(myCam.eulerRotation,
-    myMouseController.mouseXDifference(half_width),
-    myMouseController.mouseYDifference(half_height),
-    sensitivity))
-    myMouseController.moveCursor(Qt.point(half_width, half_height)); //centers the mouse cursor
-}
-
-}
-
-
+    onTriggered :{
+        myCam.eulerRotation = (myMouseController.resultant_EulerRotation(myCam.eulerRotation,
+        myMouseController.mouseXDifference(half_width),
+        myMouseController.mouseYDifference(half_height),
+        sensitivity))
+        myMouseController.moveCursor(Qt.point(half_width, half_height)); //centers the mouse cursor
+        }
+    }
 }
