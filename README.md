@@ -4,11 +4,17 @@ This is a repo I made in preparation for Brackey's Game Jam to experiment with 3
 
 As per the MIT License, feel free to use this code in your own projects involving QML, which although an uncommon platform for 3D games, I'd like to give it a shot regardless :D
 
-# Capabilities
+## Capabilities
 
-The capabilties it can do so far are:
+### The capabilties it can do so far are:
   -Look around using the mouse
+  
   -read and modify mouse position via the appropriate Class
-The capabilities I hope to add very soon are:
+  
+### The capabilities I hope to add very soon are:
+
   -movement using WASD keys,
-  -jumping
+  
+  -jumping,
+  
+  -among other features that I will add here...
