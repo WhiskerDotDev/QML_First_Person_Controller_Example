@@ -16,9 +16,13 @@ Window {
     property real difference_horizontal: 0;
     property real sensitivity: 0.1;
 
-    Custom_mouseClass{
-        id: myMouseController
-        }
+Custom_mouseClass{
+            id: myMouseController
+    }
+MouseArea{
+anchors.fill: parent
+cursorShape: "BlankCursor";
+}
 
     View3D{
     anchors.fill: parent;
@@ -57,16 +61,18 @@ property real result_horizontal: 0.0;
 Timer{
     id:tickTimer;
 running: true;
-interval: 200; //Approximately 1/60th of a second.
-triggeredOnStart: true; //Just to make the first tick the one where the trigger action runs
+interval: 10 //Approximately 1/60th of a second.
+//triggeredOnStart: true;//Just to make the first tick the one where the trigger action runs
+repeat: true;
 onTriggered :{
-myMouseController.moveCursor(Qt.point(half_width, half_height)); //centers the mouse cursor
-myCam.eulerRotation = (myMouseController.resultant_EulerRotation(
+myCam.eulerRotation = (myMouseController.resultant_EulerRotation(myCam.eulerRotation,
     myMouseController.mouseXDifference(half_width),
     myMouseController.mouseYDifference(half_height),
     sensitivity))
+    myMouseController.moveCursor(Qt.point(half_width, half_height)); //centers the mouse cursor
 }
-repeat: true;
+
 }
+
 
 }

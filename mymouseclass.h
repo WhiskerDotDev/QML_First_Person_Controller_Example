@@ -17,10 +17,11 @@ class myMouseClass : public QObject
 
     Q_INVOKABLE void moveCursor(const QPoint &p);
     Q_INVOKABLE QPoint readCursorPosition(); //Remember to use the .x and .y methods.
-    Q_INVOKABLE int mouseYDifference(const int basePotisionY);
-    Q_INVOKABLE int mouseXDifference(const int basePositionX);
-    Q_INVOKABLE QVector3D resultant_EulerRotation(const qint16 x_difference, const qint16 y_difference, const qreal sensitivity); //X, Y and 0 will be reutnred. I.e.
+    Q_INVOKABLE qint16 mouseYDifference(const qint16 basePotisionY);
+    Q_INVOKABLE qint16 mouseXDifference(const qint16 basePositionX);
+    Q_INVOKABLE QVector3D resultant_EulerRotation(QVector3D previousEulerResult ,const qint16 x_difference, const qint16 y_difference, const qreal sensitivity); //X, Y and 0 will be reutnred. I.e.
 private:
+    QVector3D previous_rotation();
     QCursor myCursor;
 };
 
