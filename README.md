@@ -9,7 +9,7 @@ As per the MIT License, feel free to use this code in your own projects involvin
 ### The capabilties it can do so far are:
   -Look around using the mouse
   
-  -read and modify mouse position via the appropriate Class
+  -read and modify mouse position via the appropriate Class (myMouseClass.h and .cpp files)
   
 ### The capabilities I hope to add very soon are:
 
