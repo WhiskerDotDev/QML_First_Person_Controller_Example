@@ -4,7 +4,7 @@ SOURCES += \
         main.cpp \
         mymouseclass.cpp
 
-resources.files = main.qml
+resources.files = main.qml crosshair_0.png crosshair_0_black.png
 resources.prefix = /$${TARGET}
 RESOURCES += resources
 

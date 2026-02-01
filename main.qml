@@ -24,10 +24,22 @@ anchors.fill: parent
 cursorShape: "BlankCursor";
 }
 
+Rectangle{
+    Image {
+        id: crosshair
+        source: "crosshair_0.png";
+        sourceSize: Qt.size(42, 42);
+        smooth:true
+    }
+    id:crosshairRectangle
+    y: (half_height - (crosshair.sourceSize.height)/2)
+    x: (half_width - (crosshair.sourceSize.width)/2)
+}
+
     View3D{
     anchors.fill: parent;
     DirectionalLight{brightness: 0.1}
-    renderMode:  View3D.Overlay
+    renderMode:  View3D.Underlay
 
     PerspectiveCamera{
         id:myCam;
