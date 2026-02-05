@@ -20,7 +20,7 @@ public:
 
     At each tick of the timer... Not the most elegant... Again, but could be better than the default controller, and easily swapped for a physics-based system (wink wink, maaaybe soon)
 */
-    Q_INVOKABLE void movePlayer(); //Final class to move player by a certain amount each tick
+//    Q_INVOKABLE void movePlayer(); //Final class to move player by a certain amount each tick
 
 signals:
 };

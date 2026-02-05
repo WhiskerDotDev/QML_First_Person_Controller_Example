@@ -2,8 +2,8 @@ QT += core gui qml quick quick3d
 
 SOURCES += \
         main.cpp \
-        movement.cpp \
         mymouseclass.cpp
+#        movement.cpp
 
 resources.files = main.qml crosshair_0.png crosshair_0_black.png
 resources.prefix = /$${TARGET}
@@ -20,8 +20,8 @@ QML_DESIGNER_IMPORT_PATH =
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    movement.h \
     mymouseclass.h
+#    movement.h
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
